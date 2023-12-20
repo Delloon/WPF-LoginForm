@@ -91,7 +91,7 @@ namespace WPF_LoginForm.ViewModels
         private void DeleteUser(object parameter)
         {
             var selectedUser = (dynamic)parameter;
-            var username = selectedUser.Логин;
+            
 
             if(selectedUser == null)
             {
@@ -100,6 +100,7 @@ namespace WPF_LoginForm.ViewModels
             }
             else
             {
+                var username = selectedUser.Логин;
                 var userRepository = new UserRepository();
                 userRepository.RemoveByUsername(username);
 
