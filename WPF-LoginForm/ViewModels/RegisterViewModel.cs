@@ -26,16 +26,10 @@ namespace WPF_LoginForm.ViewModels
             get { return _username; }
             set
             {
-                if(_username.Length > 3)
-                {
-                    _username = value;
-                    OnPropertyChanged(nameof(Username));
-                }
-                else
-                {
-                    MessageView messageView = new MessageView("Ошибка", "Логин не может быть короче 3 символов!");
-                    messageView.Show();
-                }
+
+                 _username = value;
+                 OnPropertyChanged(nameof(Username));
+
             }
         }
 
@@ -101,34 +95,45 @@ namespace WPF_LoginForm.ViewModels
         {
             try
             {
-                // Конвертирование SecureString в обычную строку перед передачей в репозиторий
-                var passwordPtr = System.Runtime.InteropServices.Marshal.SecureStringToBSTR(_password);
-                var password = System.Runtime.InteropServices.Marshal.PtrToStringBSTR(passwordPtr);
-
-                var userRepository = new UserRepository();
-                userRepository.RegisterUser(new UserModel
+                if (Username.Length < 3)
                 {
-                    Username = Username,
-                    LastName = LastName,
-                    Name = FirstName,
-                    MiddleName = MiddleName,
-                    Password = password
-                });
-
-                // Очистка конвертированных данных
-                System.Runtime.InteropServices.Marshal.ZeroFreeBSTR(passwordPtr);
-
-                Username = string.Empty;
-                LastName = string.Empty;
-                FirstName = string.Empty;
-                MiddleName = string.Empty;
-                Password.Clear(); // Очистка SecureString
-                ErrorMessage = string.Empty;
-
-                // Закрытие текущего окна
-                if (parameter is Window window)
+                    MessageView messageView = new MessageView("Ошибка", "Логин не может быть короче 3 символов!");
+                    messageView.Show();
+                }
+                else if (Password.Length < 6)
                 {
-                    window.Close();
+                    MessageView messageView = new MessageView("Ошибка", "Пароль не может быть короче 6 символов!");
+                    messageView.Show();
+                }
+                else
+                {
+                    var passwordPtr = System.Runtime.InteropServices.Marshal.SecureStringToBSTR(_password);
+                    var password = System.Runtime.InteropServices.Marshal.PtrToStringBSTR(passwordPtr);
+                    var userRepository = new UserRepository();
+                    userRepository.RegisterUser(new UserModel
+                    {
+                        Username = Username,
+                        LastName = LastName,
+                        Name = FirstName,
+                        MiddleName = MiddleName,
+                        Password = password
+                    });
+
+                    // Очистка конвертированных данных
+                    System.Runtime.InteropServices.Marshal.ZeroFreeBSTR(passwordPtr);
+
+                    Username = string.Empty;
+                    LastName = string.Empty;
+                    FirstName = string.Empty;
+                    MiddleName = string.Empty;
+                    Password.Clear(); // Очистка SecureString
+                    ErrorMessage = string.Empty;
+
+                    // Закрытие текущего окна
+                    if (parameter is Window window)
+                    {
+                        window.Close();
+                    }
                 }
 
             }
