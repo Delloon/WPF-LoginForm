@@ -16,10 +16,7 @@
     <Window.Visibility>
         <Binding Path="IsViewVisible" Mode="TwoWay" Converter="{StaticResource BooleanToVisibility}"/>
     </Window.Visibility>
-    <Border>
-        <Border.Background>
-            <ImageBrush ImageSource="/Images/back-image.jpg" Stretch="UniformToFill"/>
-        </Border.Background>
+    <Border Style="{DynamicResource LightTheme}">
         <Border BorderThickness="1" Background="Black" Opacity="0.85">
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
