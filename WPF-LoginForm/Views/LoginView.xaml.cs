@@ -22,6 +22,9 @@ namespace WPF_LoginForm.Views
         public LoginView()
         {
             InitializeComponent();
+            ThemeManager.ApplyTheme(bg, bgs);
+            QuotesList quotesList = new QuotesList();
+            textQuote.Text = quotesList.GetRandomQuote();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

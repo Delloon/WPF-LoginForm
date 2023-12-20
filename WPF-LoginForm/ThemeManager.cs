@@ -9,7 +9,6 @@ namespace WPF_LoginForm
 {
     public static class ThemeManager
     {
-        private const string ThemeKey = "AppTheme";
 
         public static void ApplyTheme(FrameworkElement bg, FrameworkElement bgs)
         {
@@ -23,7 +22,11 @@ namespace WPF_LoginForm
             {
                 ApplyLightTheme(bg, bgs);
             }
-            // Добавьте другие темы при необходимости
+
+            if(themeName == "")
+            {
+                Properties.Settings.Default.ThemeName = "Light";
+            }
         }
 
         public static void ApplyDarkTheme(FrameworkElement bg, FrameworkElement bgs)
@@ -78,20 +81,17 @@ namespace WPF_LoginForm
 
         public static string GetCurrentThemeName()
         {
-            string currentTheme = Properties.Settings.Default.ThemeName;
-            string newTheme = (currentTheme == "Dark") ? "Light" : "Dark";
-
-            Properties.Settings.Default.ThemeName = newTheme;
-            Properties.Settings.Default.Save();
-            return newTheme;
+            return Properties.Settings.Default.ThemeName;
         }
-        public static void ToggleTheme()
+        public static void ToggleTheme(FrameworkElement bg, FrameworkElement bgs)
         {
             string currentTheme = GetCurrentThemeName();
             string newTheme = (currentTheme == "Dark") ? "Light" : "Dark";
 
             Properties.Settings.Default.ThemeName = newTheme;
             Properties.Settings.Default.Save();
+
+            ApplyTheme(bg, bgs); // Применить новую тему сразу после изменения
         }
 
     }

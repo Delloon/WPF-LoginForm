@@ -27,17 +27,11 @@ namespace WPF_LoginForm.Views
             DataContext = new UserListViewModel();
 
             string currentTheme = ThemeManager.GetCurrentThemeName();
-
-            if (currentTheme == "dakr")
+            if (currentTheme == "Dark")
             {
                 switchTheme.IsChecked = true;
-                ThemeManager.ToggleTheme();
-                ThemeManager.ApplyTheme(bg, bgs);
             }
-            else
-            {
-                switchTheme.IsChecked = false;
-            }
+            ThemeManager.ApplyTheme(bg, bgs);
 
             
         }
@@ -63,20 +57,9 @@ namespace WPF_LoginForm.Views
            
         }
 
-        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        private void switchTheme_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.ThemeName = "Dark";
-            Properties.Settings.Default.Save();
-            ThemeManager.ApplyTheme(bg, bgs);
+            ThemeManager.ToggleTheme(bg, bgs);
         }
-
-        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            //Properties.Settings.Default.ThemeName = "Light";
-            //Properties.Settings.Default.Save();
-            //ThemeManager.ApplyTheme(bg, bgs);
-        }
-
-       
     }
 }

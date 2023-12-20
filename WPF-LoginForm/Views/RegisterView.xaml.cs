@@ -22,6 +22,8 @@ namespace WPF_LoginForm.Views
         public RegisterView()
         {
             InitializeComponent();
+            QuotesList quotesList = new QuotesList();
+            textQuote.Text = quotesList.GetRandomQuote();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
