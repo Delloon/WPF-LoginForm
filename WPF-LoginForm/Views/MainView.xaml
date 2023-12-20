@@ -102,21 +102,32 @@
                                     SelectedItem="{Binding SelectedUser}">
                                 </DataGrid>
 
-                                <Button
-                                    Width="100"
-                                    HorizontalAlignment="Left"
-                                    Margin="10,10,0,0"
-                                    Content="Удалить"
-                                    Command="{Binding DeleteUserCommand}"
-                                    Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
-                                    ToolTip="Resource name: MaterialDesignRaisedSecondaryButton"
-                                    CommandParameter="{Binding SelectedUser}" Cursor="Hand" />
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <Button
+                                        Width="100"
+                                        HorizontalAlignment="Left"
+                                        Margin="10,10,0,0"
+                                        Content="Удалить"
+                                        Command="{Binding DeleteUserCommand}"
+                                        Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
+                                        ToolTip="Resource name: MaterialDesignRaisedSecondaryButton"
+                                        CommandParameter="{Binding SelectedUser}" Cursor="Hand" />
+                                    <Button
+                                        Width="100"
+                                        HorizontalAlignment="Left"
+                                        Margin="10,10,0,0"
+                                        Content="Обновить"
+                                        Command="{Binding UpdateUserCommand}"
+                                        Style="{StaticResource MaterialDesignPaperSecondaryDarkButton}"
+                                        ToolTip="Resource name: MaterialDesignRaisedSecondaryButton"
+                                        CommandParameter="{Binding SelectedUser}" Cursor="Hand" />
+                                </StackPanel> 
                                 <Button
                                     HorizontalAlignment="Left"
                                     Margin="10,10,0,0"
                                     Content="Редактировать"
                                     Command="{Binding TranslateToEditUserCommand}"
-                                    Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
+                                    Style="{StaticResource MaterialDesignFlatMidBgButton}"
                                     ToolTip="Resource name: MaterialDesignRaisedSecondaryButton"
                                     CommandParameter="{Binding SelectedUser}" Cursor="Hand" />
                             </StackPanel>

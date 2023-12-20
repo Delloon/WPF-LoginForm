@@ -39,11 +39,15 @@ namespace WPF_LoginForm.ViewModels
         }
 
         public ICommand DeleteUserCommand { get; }
+        public ICommand UpdateUserCommand { get; }
 
         public UserListViewModel()
         {
             LoadData();
             DeleteUserCommand = new ViewModelCommand(DeleteUser);
+
+            UpdateUserCommand = new ViewModelCommand(UpdateUserDataCommand);
+
             TranslateToEditUserCommand = new ViewModelCommand(ExecuteTranslateToEditUserCommand);
         }
 
@@ -61,7 +65,10 @@ namespace WPF_LoginForm.ViewModels
                     Отчество = u.MiddleName,
                 }));
         }
-
+        private void UpdateUserDataCommand(object obj)
+        {
+            LoadData();
+        }
         private void ExecuteTranslateToEditUserCommand(object obj)
         {
             EditView editView = new EditView();
@@ -86,10 +93,19 @@ namespace WPF_LoginForm.ViewModels
             var selectedUser = (dynamic)parameter;
             var username = selectedUser.Логин;
 
-            var userRepository = new UserRepository();
-            userRepository.RemoveByUsername(username);
+            if(selectedUser == null)
+            {
+                MessageView messageView = new MessageView("Ошибка удаления", $"Не выбран не один пользователь!");
+                messageView.Show();
+            }
+            else
+            {
+                var userRepository = new UserRepository();
+                userRepository.RemoveByUsername(username);
 
-            LoadData();  // Обновляем данные после удаления пользователя
+                LoadData();
+            }
+            
         }
     }
 }
