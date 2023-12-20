@@ -26,8 +26,16 @@ namespace WPF_LoginForm.ViewModels
             get { return _username; }
             set
             {
-                _username = value;
-                OnPropertyChanged(nameof(Username));
+                if(_username.Length > 3)
+                {
+                    _username = value;
+                    OnPropertyChanged(nameof(Username));
+                }
+                else
+                {
+                    MessageView messageView = new MessageView("Ошибка", "Логин не может быть короче 3 символов!");
+                    messageView.Show();
+                }
             }
         }
 
@@ -123,9 +131,6 @@ namespace WPF_LoginForm.ViewModels
                     window.Close();
                 }
 
-                // Открытие окна авторизации
-                var loginWindow = new LoginView();
-                loginWindow.Show();
             }
             catch (Exception ex)
             {
