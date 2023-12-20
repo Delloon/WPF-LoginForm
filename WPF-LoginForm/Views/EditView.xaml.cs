@@ -22,6 +22,7 @@ namespace WPF_LoginForm.Views
         public EditView()
         {
             InitializeComponent();
+            ThemeManager.ApplyTheme(bg, bgs);
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

@@ -22,6 +22,7 @@ namespace WPF_LoginForm.Views
         public RegisterView()
         {
             InitializeComponent();
+            ThemeManager.ApplyTheme(bg, bgs);
             QuotesList quotesList = new QuotesList();
             textQuote.Text = quotesList.GetRandomQuote();
         }
