@@ -109,6 +109,7 @@
                                         Margin="10,10,0,0"
                                         Content="Удалить"
                                         Command="{Binding DeleteUserCommand}"
+                                        Background="#7752FE"
                                         Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                         ToolTip="Resource name: MaterialDesignRaisedSecondaryButton"
                                         CommandParameter="{Binding SelectedUser}" Cursor="Hand" />
@@ -117,8 +118,9 @@
                                         HorizontalAlignment="Left"
                                         Margin="10,10,0,0"
                                         Content="Обновить"
-                                        Command="{Binding UpdateUserCommand}"
-                                        Style="{StaticResource MaterialDesignPaperSecondaryDarkButton}"
+                                        Command="{Binding DeleteUserCommand}"
+                                        Background="#190482"
+                                        Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                         ToolTip="Resource name: MaterialDesignRaisedSecondaryButton"
                                         CommandParameter="{Binding SelectedUser}" Cursor="Hand" />
                                 </StackPanel> 
@@ -127,6 +129,7 @@
                                     Margin="10,10,0,0"
                                     Content="Редактировать"
                                     Command="{Binding TranslateToEditUserCommand}"
+                                    Background="#8E8FFA"
                                     Style="{StaticResource MaterialDesignFlatMidBgButton}"
                                     ToolTip="Resource name: MaterialDesignRaisedSecondaryButton"
                                     CommandParameter="{Binding SelectedUser}" Cursor="Hand" />
