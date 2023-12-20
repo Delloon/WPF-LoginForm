@@ -109,7 +109,7 @@
                                         Margin="10,10,0,0"
                                         Content="Удалить"
                                         Command="{Binding DeleteUserCommand}"
-                                        Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
+                                        Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                                         ToolTip="Resource name: MaterialDesignRaisedSecondaryButton"
                                         CommandParameter="{Binding SelectedUser}" Cursor="Hand" />
                                     <Button
