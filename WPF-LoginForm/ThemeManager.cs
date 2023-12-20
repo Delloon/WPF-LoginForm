@@ -83,7 +83,6 @@ namespace WPF_LoginForm
 
             Properties.Settings.Default.ThemeName = newTheme;
             Properties.Settings.Default.Save();
-
             return newTheme;
         }
         public static void ToggleTheme()
